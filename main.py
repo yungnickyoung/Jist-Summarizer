@@ -1,9 +1,10 @@
 from summa.summarizer import summarize
+from flask import Flask
 
-def summarizeArticle(article):
-    return summarize(article)
+app = Flask(__name__)
 
-def main():
+@app.route('/summarize')
+def summarizeArticle():
     article = """Germany's domestic intelligence agency is to step up monitoring of the far-right Alternative for Germany (AfD) party for suspected extremism.
 
 But the BfV agency is not yet going as far as to use informants or phone taps in its nationwide watch on AfD.
@@ -29,7 +30,7 @@ The BfV is empowered under the German constitution to act against perceived thre
 Some statements by AfD leaders have been condemned as encouraging neo-Nazi extremism. AfD activists took part in far-right rallies in the eastern city of Chemnitz last year, marred by clashes with police.
 
 """
-    print(summarizeArticle(article))
+    return summarize(article)
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True, host='0.0.0.0')

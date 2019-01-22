@@ -4,13 +4,12 @@ from flask import request
 
 app = Flask(__name__)
 
-@app.route('/summarize/')
+@app.route('/summarize')
 def summarizeArticle():
-
-	#print(request.data.decode("unicode-escape"))
+	print(request.data.decode("unicode-escape"))
 	summary = summarize(request.data.decode("unicode-escape"))
 	app.logger.info("Processing article %s", summary)
-	return "200"
+	return summary
 
 if __name__ == "__main__":
-	app.run(debug=True, host='0.0.0.0')
+	app.run(debug=True, host='0.0.0.0', port=80)

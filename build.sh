@@ -1,1 +1,1 @@
-docker build -t jist-summarizer-image .
+docker build --tag=jist-summarizer-image:v0.0.1 .

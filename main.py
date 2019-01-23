@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/summarize')
 def summarizeArticle():
-	print(request.data.decode("unicode-escape"))
+	# print(request.data.decode("unicode-escape"))
 	summary = summarize(request.data.decode("unicode-escape"), ratio=.1)
 	app.logger.info("Processing article %s", summary)
 	return summary

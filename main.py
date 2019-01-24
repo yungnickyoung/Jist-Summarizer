@@ -4,7 +4,7 @@ from flask import request
 
 app = Flask(__name__)
 
-@app.route('/summarize', methods = ['POST'])
+@app.route('/summarize')
 def summarizeArticle():	
 	summary = summarize(request.data.decode("unicode-escape"), ratio=.1)
 	app.logger.info("Processing article: %s", summary)

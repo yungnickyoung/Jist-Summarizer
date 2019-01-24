@@ -4,11 +4,10 @@ from flask import request
 
 app = Flask(__name__)
 
-@app.route('/summarize')
-def summarizeArticle():
-	# print(request.data.decode("unicode-escape"))
+@app.route('/summarize', methods = ['POST'])
+def summarizeArticle():	
 	summary = summarize(request.data.decode("unicode-escape"), ratio=.1)
-	app.logger.info("Processing article %s", summary)
+	app.logger.info("Processing article: %s", summary)
 	return summary
 
 if __name__ == "__main__":
